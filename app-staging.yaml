@@ -1,5 +1,6 @@
 service: app-staging
 entrypoint: RAILS_ENV=staging bundle exec rails db:migrate && RAILS_ENV=staging bundle exec rails server -e staging --port $PORT
+env: flex
 runtime: ruby
 instance_class: F1
 automatic_scaling:
