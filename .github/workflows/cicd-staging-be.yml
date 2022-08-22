@@ -8,21 +8,6 @@ on:
     branches:
       - master
 jobs:
-  tests:
-    runs-on: ubuntu-latest
-    env:
-      RAILS_ENV: test
-      DATABASE_HOST: localhost
-      DATABASE_USERNAME: bookstore
-      DATABASE_PASSWORD: bookstore
-    services:
-      postgres:
-        image: postgres:13
-        env:
-          POSTGRES_PASSWORD: bookstore
-          POSTGRES_USER: bookstore
-        ports:
-          - 5432:5432
   container:
     runs-on: ubuntu-latest
     steps:
