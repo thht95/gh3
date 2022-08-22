@@ -23,31 +23,8 @@ jobs:
           POSTGRES_USER: bookstore
         ports:
           - 5432:5432
-    steps:
-      - uses: actions/checkout@v3
-      - name: Set up Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: 3.0
-          bundler-cache: true
-      - name: Set up Node
-        uses: actions/setup-node@v1
-        with:
-          node-version: 14.9
-      - name: Install dependencies
-        run: |
-          sudo apt-get -yqq install libpq-dev build-essential libcurl4-openssl-dev
-          gem install bundler
-          bundle install --jobs 4
-          yarn install
-      - name: Setup databases
-        run: |
-          bin/rails db:setup
-      - name: Run tests
-        run: bin/rails test
   container:
     runs-on: ubuntu-latest
-    needs: [tests]
     steps:
       - uses: actions/checkout@v3
       - name: Setup Google Cloud SDK
