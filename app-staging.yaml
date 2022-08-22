@@ -1,0 +1,13 @@
+service: app-staging
+entrypoint: RAILS_ENV=staging bundle exec rails db:migrate && RAILS_ENV=staging bundle exec rails server -e staging --port $PORT
+env: flex
+runtime: ruby
+instance_class: F1
+automatic_scaling:
+  max_num_instances: 1
+  min_num_instances: 1
+resources:
+  cpu: .1
+  memory_gb: .5
+includes:
+  - secret-staging.yaml
