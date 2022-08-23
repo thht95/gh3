@@ -10,6 +10,10 @@ development:
   <<: *default
   database: bookstore_development
 
+staging:
+  <<: *default
+  database: bookstore-db
+
 test:
   <<: *default
   database: bookstore_test
